@@ -1,1 +1,25 @@
 /* PHASE 9: Forms */
+.form-fieldset {
+  float: left;
+  background: grey;
+  height: 100px;
+  width: 100%;
+}
+
+.input > textarea {
+  height: 150px;
+  /* width: 400px; */
+}
+
+.input > text {
+  height: inherit;
+}
+
+.submit > button {
+  position: relative;
+  padding: 15px; 
+  color: white;
+  background: green;
+  font-weight: bold;
+}
+

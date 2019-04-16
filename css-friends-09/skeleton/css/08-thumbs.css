@@ -17,6 +17,7 @@
 .thumb {
   display: block;
   position: relative;
+  float: left;
   width: 58px;
   height: 58px;
   border: 1px solid #000;
