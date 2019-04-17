@@ -1,11 +1,64 @@
 class View {
-  constructor(game, $el) {}
+  constructor(game, $el) {
+    this.game = game;
+    this.$el = $el;
 
-  bindEvents() {}
+    this.setupBoard();
+    this.bindEvents();
+  }
+  
+  setupBoard() {
+    const $ul = $("<ul>");
 
-  makeMove($square) {}
+    for (let rowIdx = 0; rowIdx < 3; rowIdx++) {
+      for (let colIdx = 0; colIdx < 3; colIdx++) {
+        let $li = $("<li>");
+        $li.data("pos", [rowIdx, colIdx]);
 
-  setupBoard() {}
+        $ul.append($li);
+      }
+    }
+
+    this.$el.append($ul);
+  }
+
+  makeMove($square) {
+    const pos = $square.data("pos");
+    const currentPlayer = this.game.currentPlayer;
+
+    try {
+      this.game.playMove(pos);
+    } catch (e) {
+      alert("This " + e.msg.toLowerCase());
+      return;
+    };
+
+    $square.addClass(currentPlayer);
+
+    if (this.game.isOver()) {
+      this.$el.off("click");
+      this.$el.addClass("game-over");
+
+      const winner = this.game.winner();
+      const $figcaption = $("<figcaption>");
+
+      if (winner) {
+        this.$el.addClass(`winner-${winner}`);
+        $figcaption.html(`You win, ${winner}!`);
+      } else {
+        $figcaption.html("It's a draw!");
+      }
+
+      this.$el.append($figcaption);
+    }
+  }
+
+  bindEvents() {
+    this.$el.click("click", "li", (event => { //.on
+      const $square = $(event.currentTarget);
+      this.makeMove($square);
+    }));
+  }
 }
 
 module.exports = View;

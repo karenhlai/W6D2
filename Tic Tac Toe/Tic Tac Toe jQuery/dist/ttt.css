@@ -1,0 +1,84 @@
+html, body, figure, figcaption, ul, li, h1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  text-align: inherit;
+  background: lightpink;
+}
+
+figcaption {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 40px;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 100px;
+  margin: 50px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px auto;
+  width: 300px;
+  border: 5px solid darkorchid;
+}
+
+li {
+  width: 90px;
+  height: 90px;
+  border: 5px solid purple;
+  background: plum;
+  cursor: pointer;
+}
+
+li:hover {
+  background: pink;
+}
+
+.x, .o {
+  background: white;
+  cursor: default;
+}
+
+.x:hover, .o:hover {
+  background: white;
+}
+
+.x:after, .o:after {
+  display: block;
+  width: 100%;
+  font-size: 60px;
+  line-height: 80px;
+}
+
+.x:after {
+  content: "x";
+}
+
+.o:after {
+  content: "o";
+}
+
+.game-over li {
+  color: purple;
+  cursor: default;
+  background: white;
+}
+
+.winner-x .x,
+.winner-o .o {
+  background: plum;
+  color: slateblue;
+}
